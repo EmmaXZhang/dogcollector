@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 # should come from database
-cats = [
-  {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
-  {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
+dogs = [
+  {'name': 'Lolo', 'breed': 'Corgi', 'description': 'furry little demon', 'age': 3},
+  {'name': 'Sachi', 'breed': 'Pomeranian', 'description': 'gentle and loving', 'age': 2},
 ]
 
 
@@ -16,6 +16,6 @@ def about(request):
 
 
 def cats_index(request):
-    return render(request,'cats/index.html',{
-        'cats':cats
+    return render(request,'dogs/index.html',{
+        'dogs':dogs
     })
