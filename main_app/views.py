@@ -1,12 +1,6 @@
 from django.shortcuts import render
 from .models import Dog
 
-# should come from database
-dogs = [
-  {'name': 'Lolo', 'breed': 'Corgi', 'description': 'furry little demon', 'age': 3},
-  {'name': 'Sachi', 'breed': 'Pomeranian', 'description': 'gentle and loving', 'age': 2},
-]
-
 
 def home(request):
     return render(request,'home.html')
@@ -17,6 +11,7 @@ def about(request):
 
 
 def dogs_index(request):
+    dogs = Dog.objects.all()
     return render(request,'dogs/index.html',{
         'dogs':dogs
     })
