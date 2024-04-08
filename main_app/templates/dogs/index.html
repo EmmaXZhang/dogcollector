@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Cat List</h1>
+<h1>Dog List</h1>
 
-{% for cat in cats %}
+{% for dog in dogs %}
 <div class="card">
   <div class="card-content">
-    <!-- cat.name is variable -->
-    <span class="card-title">{{ cat.name }}</span>
-    <p>Breed: {{ cat.breed }}</p>
-    <p>Description: {{ cat.description }}</p>
-    {% if cat.age > 0 %}
-    <p>Age: {{ cat.age }}</p>
+    <!-- dog.name is variable -->
+    <span class="card-title">{{ dog.name }}</span>
+    <p>Breed: {{ dog.breed }}</p>
+    <p>Description: {{ dog.description }}</p>
+    {% if dog.age > 0 %}
+    <p>Age: {{ dog.age }}</p>
     {% else %}
     <p>Age: Kitten</p>
     {% endif %}

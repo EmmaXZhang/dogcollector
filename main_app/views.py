@@ -15,7 +15,7 @@ def about(request):
     return render(request,'about.html')
 
 
-def cats_index(request):
+def dogs_index(request):
     return render(request,'dogs/index.html',{
         'dogs':dogs
     })
