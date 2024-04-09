@@ -9,6 +9,9 @@ urlpatterns = [
     path('dogs/',views.dogs_index,name='index'),
     path('dogs/<int:dog_id>',views.dogs_detail,name="detail"),
 
+    # add feeding model
+    path('dogs/<int:dog_id>/add_feeding/', views.add_feeding, name='add_feeding'),
+
     # add a dog
     path('dogs/create/',views.DogCreate.as_view(),name="dogs_create"),
 
