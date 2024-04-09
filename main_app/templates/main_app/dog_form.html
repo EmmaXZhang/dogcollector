@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- New if/else block -->
+{% if object %}
+<!-- object => Cat object -->
+<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+{% else %}
+<h1>Add Dog</h1>
+{% endif %}
+
+<!-- Get /cats/create -->
+<!-- POST /cats/create -->
+<!-- leave "" in action, it will use the same url: /cats/create-->
+<form action="" method="POST">
+  <!-- use for permission validation -->
+  {% csrf_token %}
+  <table>
+    <!-- form is object in Django, then create a table using as_table, form.as_table is a function -->
+    {{ form.as_table }}
+  </table>
+  {% if object %}
+  <input type="submit" value="Update Cat" class="btn" />
+  {% else %}
+  <input type="submit" value="Create Cat" class="btn" />
+  {% endif %}
+</form>
+{% endblock %}
