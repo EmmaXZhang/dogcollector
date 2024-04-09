@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Dog
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from .forms import FeedingForm
 
 
 def home(request):
@@ -19,11 +20,13 @@ def dogs_index(request):
 
 def dogs_detail(request,dog_id):
     dog = Dog.objects.get(id=dog_id)
+
+    feeding_form = FeedingForm()
     return render(request,'dogs/detail.html',{
-        'dog':dog
+        'dog':dog,'feeding_form':feeding_form
     })
 
-def add_feeding(request, cat_id):
+def add_feeding(request, dog_id):
   # create a ModelForm instance using the data in request.POST
   form = FeedingForm(request.POST)
   # validate the form
@@ -31,9 +34,9 @@ def add_feeding(request, cat_id):
     # don't save the form to the db until it
     # has the cat_id assigned
     new_feeding = form.save(commit=False)
-    new_feeding.cat_id = cat_id
+    new_feeding.dog_id = dog_id
     new_feeding.save()
-  return redirect('detail', cat_id=cat_id)
+  return redirect('detail', dog_id=dog_id)
 
 
 # Handle create and post request

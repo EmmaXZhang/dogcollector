@@ -26,7 +26,7 @@
 
   <div class="col s6">
     <!-- add feeding form -->
-    <form action="{% url 'add_feeding' dog.id %}" method="post">
+    <form action="{% url 'add_feeding' dog.id %}" method="POST">
       {% csrf_token%} {{feeding_form.as_p}}
       <!-- input is a type of text -->
       <input type="submit" class="btn" value="Add Feeding" />
@@ -50,5 +50,19 @@
     </table>
   </div>
 </div>
+
+<script>
+  const dateElement = document.getElementById("id_date");
+  M.Datepicker.init(dateElement, {
+    format: "yyyy-mm-dd",
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true,
+  });
+
+  // drop down
+  const selectElement = document.getElementById("id_meal");
+  M.FormSelect.init(selectElement);
+</script>
 
 {% endblock %}
