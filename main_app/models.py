@@ -10,16 +10,26 @@ MEALS = (
 
 
 # Create your models here.
+class Toy(models.Model):
+    name = models.CharField(max_length=256)
+    color = models.CharField(max_length=16)
+
+    def get_absolute_url(self):
+        return reverse('toys_detail',kwargs={'pk':self.id})
+    
+    def __str__(self):
+        return self.name
+
+
 class Dog(models.Model):
     name = models.CharField(max_length=256)
     breed = models.CharField(max_length=256)
     description = models.CharField(max_length=256)
     age = models.IntegerField()
+    toys = models.ManyToManyField(Toy)
 
     def __str__(self):
         return self.name
-    
-
     def get_absolute_url(self):
         return reverse('detail',kwargs={'dog_id':self.id})
     
@@ -35,3 +45,5 @@ class Feeding(models.Model):
     
     class Meta:
         ordering =['-date']
+
+
